@@ -84,14 +84,14 @@ public class Wordle {
     }
 
     @VisibleForTesting
-    private void reThrowExceptionForTesting(boolean throwEx, Exception e) throws Exception {
-        if (throwEx) {
+    private void reThrowExceptionForTesting(boolean isThrow, Exception e) throws Exception {
+        if (isThrow) {
             throw e;
         }
     }
 
     private String processEmptyInput(String guess) {
-        if (guess.isBlank()) {
+        if (guess != null && guess.isBlank()) {
             guess = game.getSuggestedWord(game.getWord(), game.getClue());
             System.out.printf("%35s%n", "Подсказка: " + guess);
         }

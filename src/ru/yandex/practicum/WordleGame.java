@@ -16,6 +16,7 @@ import java.util.Random;
 public class WordleGame {
 
     private static final int MAX_STEPS = 6;
+    private static final int WORD_LENGTH = 5;
     private String answer;
     private boolean isWon;
     private int steps;
@@ -104,12 +105,19 @@ public class WordleGame {
     }
 
     public String processClue(String word, String answer) {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder(WORD_LENGTH);
 
-        for (int i = 0; i < answer.length(); i++) {
-            String letter = answer.contains(String.valueOf(word.charAt(i))) ?
-                    answer.charAt(i) == word.charAt(i) ? "+" : "^" : "-";
-            builder.append(letter);
+        for (int i = 0; i < WORD_LENGTH; i++) {
+            char guessChar = word.charAt(i);
+            char answerChar = answer.charAt(i);
+
+            if (guessChar == answerChar) {
+                builder.append("+");
+            } else if (answer.indexOf(guessChar) >= 0) {
+                builder.append("^");
+            } else  {
+                builder.append("-");
+            }
         }
         return builder.toString();
     }

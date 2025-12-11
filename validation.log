@@ -6,3 +6,6 @@
 10.12.2025, 15:55:57 - WordNotFoundException: word not found: топор
 10.12.2025, 15:55:57 - WordNotFoundException: word not found: грива
 10.12.2025, 23:56:25 - WordNotFoundException: word not found: топор
+11.12.2025, 10:47:43 - BadWordLengthException: word length is not 5: программа
+11.12.2025, 10:47:43 - WrongLanguageException: detected wrong language: game
+11.12.2025, 10:47:43 - WordNotFoundException: word not found: ортеа

@@ -57,17 +57,11 @@ public class Wordle {
                     break;
                 }
             } catch (WordNotFoundException ex) {
-                reThrowExceptionForTesting(isTesting,ex);
-                System.out.printf("%30s", "Не найдено. Попробуйте еще: ");
-                validationLog.printf("%s - %s%n",dateTime.format(DATE_TIME_FORMATTER),ex.getMessage());
+                processException(isTesting,ex,"Не найдено. Попробуйте еще: ");
             } catch (BadWordLengthException ex) {
-                reThrowExceptionForTesting(isTesting,ex);
-                System.out.printf("%30s", "Слово должно быть из 5 букв: ");
-                validationLog.printf("%s - %s%n",dateTime.format(DATE_TIME_FORMATTER),ex.getMessage());
+                processException(isTesting,ex,"Слово должно быть из 5 букв: ");
             } catch (WrongLanguageException ex) {
-                reThrowExceptionForTesting(isTesting,ex);
-                System.out.printf("%30s", "Только русские буквы: ");
-                validationLog.printf("%s - %s%n",dateTime.format(DATE_TIME_FORMATTER),ex.getMessage());
+                processException(isTesting,ex,"Только русские буквы: ");
             }
         }
         scanner.close();
@@ -83,11 +77,13 @@ public class Wordle {
         return game;
     }
 
-    @VisibleForTesting
-    private void reThrowExceptionForTesting(boolean isThrow, Exception e) throws Exception {
+
+    private void processException(boolean isThrow, Exception e, String message) throws Exception {
         if (isThrow) {
             throw e;
         }
+        System.out.printf("%30s",message);
+        validationLog.printf("%s - %s%n",dateTime.format(DATE_TIME_FORMATTER),e.getMessage());
     }
 
     private String processEmptyInput(String guess) {
@@ -98,7 +94,8 @@ public class Wordle {
         return guess;
     }
 
-    private void processGame(String guess) throws WordNotFoundException, BadWordLengthException, WrongLanguageException {
+    private void processGame(String guess)
+            throws WordNotFoundException, BadWordLengthException, WrongLanguageException {
         String gameMessage = game.tryToGuessWord(guess);
         if (game.getAttemptsLeft() > 0 && game.isInPlay()) {
             System.out.printf("%35s%n", gameMessage);

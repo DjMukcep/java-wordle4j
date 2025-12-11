@@ -1,0 +1,11 @@
+10.12.2025, 14:31:58 - WrongLanguageException: detected wrong language: vvv
+10.12.2025, 14:31:58 - BadWordLengthException: word length is not 5: ро
+10.12.2025, 14:31:58 - WordNotFoundException: word not found: лоншь
+10.12.2025, 15:55:57 - BadWordLengthException: word length is not 5: ор
+10.12.2025, 15:55:57 - WordNotFoundException: word not found: роргр
+10.12.2025, 15:55:57 - WordNotFoundException: word not found: топор
+10.12.2025, 15:55:57 - WordNotFoundException: word not found: грива
+10.12.2025, 23:56:25 - WordNotFoundException: word not found: топор
+11.12.2025, 10:47:43 - BadWordLengthException: word length is not 5: программа
+11.12.2025, 10:47:43 - WrongLanguageException: detected wrong language: game
+11.12.2025, 10:47:43 - WordNotFoundException: word not found: ортеа
